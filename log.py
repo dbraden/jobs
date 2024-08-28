@@ -4,8 +4,8 @@
 
 import datetime
 
-PATH = "/Users/drew/app/jobs/"
-LOGFILE = f"{PATH}/log.txt"
+import constants
+LOGFILE = f"{constants.PATH}/log.txt"
 
 
 class Logger:
