@@ -13,7 +13,7 @@ class Mayo(base.Company):
 
     NAME = "Mayo"
     LIST_URL = "https://jobs.mayoclinic.org/search-jobs?acm=ALL&alrpm=ALL&ascf=[%7B%22key%22:%22custom_fields.RemoteField%22,%22value%22:%22Yes%22%7D]"
-    JOB_DESC_URL = "https://jobs.mayoclinic.org/job/%s"
+    JOB_DESC_URL = "https://jobs.mayoclinic.org/%s"
     TEAM = "Engineering"
     REGION = "United States"
 
