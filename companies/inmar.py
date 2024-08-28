@@ -14,19 +14,23 @@ class Inmar(base.Company):
 
     def get_headers(self):
         return {
-            'accept': 'application/json',
-            'content-type': 'application/json',
+            "accept": "application/json",
+            "content-type": "application/json",
         }
 
     def get_data(self, offset=None):
         return {
             "appliedFacets": {
                 "jobFamilyGroup": ["f4d09ae81507102da2509648ba482a8e"],
-                "locations": ["c9856d3fa53601f8de3201b8a0010cb4","f9d9c61ccfac105075aae3e09e9a7ea2"]},
-                "limit": self.PAGE_SIZE,
-                "offset": offset or 0,
-                "searchText": ""
-            }
+                "locations": [
+                    "c9856d3fa53601f8de3201b8a0010cb4",
+                    "f9d9c61ccfac105075aae3e09e9a7ea2",
+                ],
+            },
+            "limit": self.PAGE_SIZE,
+            "offset": offset or 0,
+            "searchText": "",
+        }
 
     def pull(self, include_all=False):
         if include_all:
@@ -43,19 +47,23 @@ class Inmar(base.Company):
         total = None
         count = 0
         while total is None or (count is not None and count < total):
-            response = requests.post(self.LIST_URL, json=self.get_data(offset), headers=self.get_headers())
+            response = requests.post(
+                self.LIST_URL, json=self.get_data(offset), headers=self.get_headers()
+            )
             response_json = response.json()
-            total = response_json.get('total')
-            for item in response.json().get('jobPostings'):
-                job_id = item.get('bulletFields')[0]
+            total = response_json.get("total")
+            for item in response_json.get("jobPostings"):
+                job_id = item.get("bulletFields")[0]
                 if str(job_id) not in seen:
-                    new_jobs.append({
-                        'id': job_id,
-                        'title': item.get('title'),
-                        'href': item.get('externalPath'),
-                        'location': item.get('locationsText'),
-                        'posted': item.get('postedOn')
-                    })
+                    new_jobs.append(
+                        {
+                            "id": job_id,
+                            "title": item.get("title"),
+                            "href": item.get("externalPath"),
+                            "location": item.get("locationsText"),
+                            "posted": item.get("postedOn"),
+                        }
+                    )
                     self.mark_seen(str(job_id))
                 count += 1
             offset += self.PAGE_SIZE
@@ -74,5 +82,5 @@ class Inmar(base.Company):
             title=job.get("title").strip(),
             location=job.get("location"),
             posted=job.get("posted"),
-            url=self.JOB_DESC_URL % job.get('href')
+            url=self.JOB_DESC_URL % job.get("href"),
         )
