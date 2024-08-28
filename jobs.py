@@ -4,11 +4,6 @@
 
 import argparse
 import collections
-import datetime
-from email.mime.text import MIMEText
-import json
-import os
-import smtplib
 import sqlite3
 
 import constants
