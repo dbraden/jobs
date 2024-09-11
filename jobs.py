@@ -7,12 +7,12 @@ import collections
 import sqlite3
 
 import constants
-from companies import Honor, Inmar, Mayo, Veeva
+from companies import Grow, Honor, Inmar, Mayo, Veeva
 from log import Logger
 from notify import notify
 
 DBNAME = f"{constants.PATH}/jobs.db"
-ACTIVE_COMPANIES = [Honor, Inmar, Mayo, Veeva]
+ACTIVE_COMPANIES = [Grow, Honor, Inmar, Mayo, Veeva]
 
 logger = Logger()
 
