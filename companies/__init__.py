@@ -1,3 +1,4 @@
+from .affirm import Affirm
 from .grow import Grow
 from .honor import Honor
 from .inmar import Inmar
