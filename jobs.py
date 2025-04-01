@@ -12,7 +12,14 @@ from log import Logger
 from notify import notify
 
 DBNAME = f"{constants.PATH}/jobs.db"
-ACTIVE_COMPANIES = [Affirm, Grow, Honor, Inmar, Mayo, Veeva]
+ACTIVE_COMPANIES = [
+    Affirm,
+    Grow,
+    Honor,
+    Inmar,
+    #Mayo,
+    Veeva,
+]
 
 logger = Logger()
 
